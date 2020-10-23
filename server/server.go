@@ -1,18 +1,32 @@
 package main
 
 import (
-	"time"
-
+	"context"
 	pbHello "proto"
+	"time"
 
 	"github.com/micro/go-micro/v2/service"
 	"github.com/micro/go-micro/v2/service/grpc"
 
 	"github.com/micro/go-micro/v2/logger"
+	"github.com/micro/go-micro/v2/metadata"
 	"github.com/micro/go-micro/v2/registry/etcd"
+	"github.com/micro/go-micro/v2/server"
 
 	log "common/log"
 )
+
+// 实现server.HandlerWrapper接口
+func logWrapper(fn server.HandlerFunc) server.HandlerFunc {
+	return func(ctx context.Context, req server.Request, rsp interface{}) error {
+
+		requestID, _ := metadata.Get(ctx, "Requestid")
+
+		logger.Infof("server invoke by grpc. requestID:%s service:%s method:%s", requestID, req.Service(), req.Endpoint())
+
+		return fn(ctx, req, rsp)
+	}
+}
 
 func main() {
 
@@ -29,6 +43,7 @@ func main() {
 		service.Registry(r),
 		service.RegisterTTL(time.Second*30),
 		service.RegisterInterval(time.Second*10),
+		service.WrapHandler(logWrapper),
 	)
 
 	// 初始化方法会解析命令行标识

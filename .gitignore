@@ -8,3 +8,6 @@ Thumbs.db
 /server/__debug_bin
 /server/server
 /server/*.log
+
+/client/*.log
+/client/client

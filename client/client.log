@@ -1,4 +1,0 @@
-{"l":"INFO","t":"2020-09-18 16:19:03.886","c":"/Users/robert/DVP/dvp_go/go/src/github.com/zhanglihua2008/go-micro-example/client/client.go:20","msg":"start"}
-{"l":"DEBUG","t":"2020-09-18 16:19:03.887","c":"/Users/robert/DVP/dvp_go/go/src/github.com/zhanglihua2008/go-micro-example/client/client.go:21","msg":"start debug"}
-{"l":"INFO","t":"2020-09-18 16:28:38.504","c":"/Users/robert/DVP/dvp_go/go/src/github.com/zhanglihua2008/go-micro-example/client/client.go:20","msg":"start"}
-{"l":"DEBUG","t":"2020-09-18 16:28:38.504","c":"/Users/robert/DVP/dvp_go/go/src/github.com/zhanglihua2008/go-micro-example/client/client.go:21","msg":"start debug"}
